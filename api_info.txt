@@ -1,0 +1,449 @@
+Login
+	Link: /account/login
+	Params:	
+		email: email
+		password: password
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null,
+			"accessToken": "d454d7e6-857e-4978-a8e1-ee20e74033b3",
+			"refreshToken": "c56a52fc-1bb2-4c47-ae87-2637235fcd94"
+		}
+	
+Logout
+	Link: /account/login?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null
+		}
+	
+Register:
+	Link: /account/register
+	Params:	
+		email: email
+		password: password
+		screenname: screenname (optional)
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null
+		}
+	
+Update Account:
+	Link: /account/update?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		screenname: screenname
+		avatar: avatar (link)
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null
+		}
+		
+Change Password:
+	Link: /account/changePassword?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		new: new
+		old: old
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null
+		}
+		
+Account Info:
+	Link: /account/info?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null,
+			"account": {
+				"id": 1,
+				"email": "hoangnn@gmail.com",
+				"screenName": "hoangnn",
+				"avatar": null,
+				"followed": false
+			}
+		}
+		
+Follow:
+	Link: /account/follow?accessToken=accessToken
+	Params:	
+		followerId: followerId
+		accessToken: accessToken
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null
+		}
+	
+UnFollow:
+	Link: /account/unfollow?accessToken=accessToken
+	Params:	
+		followerId: followerId
+		accessToken: accessToken
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null
+		}
+	
+FollowInfo:
+	Link: /account/get/followInfo?accessToken=accessToken
+	Params:	
+		accountId: accountId
+		accessToken: accessToken
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null,
+			"info": {
+				"account": {
+					"id": 2,
+					"email": "thuc@gmail.com",
+					"screenName": "thuc",
+					"avatar": null,
+					"followed": null
+				},
+				"followers": [
+					{
+						"id": 2,
+						"email": "thuc@gmail.com",
+						"screenName": "thuc",
+						"avatar": null,
+						"followed": null
+					}
+				],
+				"followeds": [
+					{
+						"id": 9,
+						"email": "abc",
+						"screenName": "Le Minh Nhut",
+						"avatar": null,
+						"followed": null
+					},
+					{
+						"id": 2,
+						"email": "thuc@gmail.com",
+						"screenName": "thuc",
+						"avatar": null,
+						"followed": null
+					},
+					{
+						"id": 1,
+						"email": "hoangnn@gmail.com",
+						"screenName": "hoangnn",
+						"avatar": null,
+						"followed": null
+					}
+				]
+			}
+		}
+	
+Search:
+	Link: /account/search?accessToken=accessToken
+	Params:	
+		screenname: screenname
+		accessToken: accessToken
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null,
+			"accounts": [
+				{
+					"id": 1,
+					"email": "hoangnn@gmail.com",
+					"screenName": "hoangnn",
+					"avatar": null,
+					"followed": false
+				}
+			]
+		}
+	
+List File:
+	Link: /file/list?accessToken=accessToken
+	Params:	
+		date: date (ex: 2014/06/27)
+		accessToken: accessToken
+		type: image or video
+	Method: GET
+	Result:
+		{
+			"result": "success",
+			"error": null,
+			"albums": [
+				{
+					"album": "other",
+					"files": [
+						"a30cf4fdc8074ff895eee59e6acbabbd.jpg",
+						"e0ce598474f64c6798376c820df3bb78.jpg",
+						"d50d1b87ef6a40f5b76ad4ff1c168c69.jpg",
+						"d293ed30a6cf4cc691239870e3d75e91.jpg",
+						"57a26442d1154b6bbdb137f908ed5631.jpg",
+						"6f0e71dc5f404f85a6660d33d5295ed9.jpg",
+						"2ce15774c5434c82840e721e5412effd.jpg",
+						"39c72b35ffb64846aeff36ab2f42c139.jpg",
+						"b59821ba30d04d26ba3825d175604461.jpg",
+						"16d04c0c27b94550a3136e707af4565a.jpg",
+						"7aa4a096174d417291cf621fd586c3be.jpg",
+						"7154852494a148a2a82755c31eede306.jpg"
+					]
+				},
+				{
+					"album": "example",
+					"files": [
+						"dog_6.jpg",
+						"dog_3.jpg",
+						"dog_1.jpg",
+						"dog_5.jpg",
+						"dog_0.jpg",
+						"dog_2.jpg",
+						"dog_4.jpg"
+					]
+				}
+			]
+		}
+	
+Download File:
+	Link: /file/download/{filename}?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		type: image or video
+		date: date (ex: 2014/07/02)
+		album: album
+	Method: GET
+	Result: N/A
+	
+Upload File:
+	Link: /file/upload/?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		album: album (if no album file save to 'other' album)
+	Method: Post
+	Content-Type: multipart/form-data
+	Result: 
+		Image file: 
+			{
+				"result": "success",
+				"error": null,
+				"imageIds": [
+					29,
+					30,
+					31,
+					32
+				],
+				"fileNames": [
+					"6daab4daf937483cb28c819a56bb371e",
+					"eb42632058ea4d26bb1c468e499ff2e1",
+					"be0681df85ab428ba28123310af8548c",
+					"430d6da417924f928cddb799054dec5e"
+				],
+				"links": [
+					"http://10.88.16.142/tmp/image/2014/07/03/1/other/6daab4daf937483cb28c819a56bb371e.jpg",
+					"http://10.88.16.142/tmp/image/2014/07/03/1/other/eb42632058ea4d26bb1c468e499ff2e1.jpg",
+					"http://10.88.16.142/tmp/image/2014/07/03/1/other/be0681df85ab428ba28123310af8548c.jpg",
+					"http://10.88.16.142/tmp/image/2014/07/03/1/other/430d6da417924f928cddb799054dec5e.jpg"
+				],
+				"album": "other"
+			}
+		Video file:
+			{
+				"result": "success",
+				"error": null,
+				"imageIds": [],
+				"fileNames": [
+					"982baedd41684b61a7baca97cf87e8ad"
+				],
+				"links": [
+					"http://10.88.16.142/tmp/video/2014/07/03/1/other/982baedd41684b61a7baca97cf87e8ad.mp4"
+				],
+				"album": "other"
+			}
+	
+Post new feed:
+	Link: /feed/post?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		status: status
+		imageId: imageId
+		url: url
+	Method: POST
+	Result: 
+		{
+			"result": "success",
+			"error": null,
+			"feedId": 5
+		}
+		
+Get new feed:
+	Link: /feed/get/newest?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		quantity: quantity
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null,
+			"feeds": [
+				{
+					"id": 2,
+					"account": {
+						"id": 2,
+						"email": "zuzu@gmail.com",
+						"screenName": "zuzu",
+						"avatar": null,
+						"followed": true
+					},
+					"status": "Con Gấu Kaola :3",
+					"image": {
+						"id": 1,
+						"url": "localhost/tmp/image/2014/07/04/1/other/30f1e0f6c6ad444c8596d4672e6d5bd2.jpg",
+						"createTime": 1404459620,
+						"tags": []
+					},
+					"url": "localhost/tmp/image/2014/07/04/1/other/30f1e0f6c6ad444c8596d4672e6d5bd2.jpg",
+					"createTime": 1404460030,
+					"likeCount": 0,
+					"comments": [
+						{
+							"id": 1,
+							"account": {
+								"id": 1,
+								"email": "hoangnn@gmail.com",
+								"screenName": "hoangnn",
+								"avatar": null,
+								"followed": null
+							},
+							"text": "Gấu cái búa :v",
+							"createTime": 1404462736,
+							"likeCount": 0,
+							"liked": false
+						}
+					],
+					"liked": false
+				}
+			]
+		}
+
+Like Feed:
+	Link: /feed/like?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		id: id (feedId)
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null
+		}
+		
+Like Feed:
+	Link: /feed/unlike?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		id: id (feedId)
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null
+		}
+
+Commend:
+	Link: /comment/commend?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		feedId: feedId
+		text: text
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null,
+			"commentId": 2
+		}
+		
+Like Comment:
+	Link: /comment/like?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		id: id (feedId)
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null
+		}
+		
+Like Comment:
+	Link: /comment/unlike?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		id: id (feedId)
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null
+		}
+	
+Get Feed's Comment:
+	Link: /comment/getByFeed?accessToken=accessToken
+	Params:	
+		accessToken: accessToken
+		feedId: feedId
+	Method: GET
+	Result: 
+		{
+			"result": "success",
+			"error": null,
+			"comments": [
+				{
+					"id": 1,
+					"account": {
+						"id": 1,
+						"email": "hoangnn@gmail.com",
+						"screenName": "hoangnn",
+						"avatar": null,
+						"followed": null
+					},
+					"text": "Gấu cái búa :v",
+					"createTime": 1404462736,
+					"likeCount": 1,
+					"liked": true
+				},
+				{
+					"id": 2,
+					"account": {
+						"id": 1,
+						"email": "hoangnn@gmail.com",
+						"screenName": "hoangnn",
+						"avatar": null,
+						"followed": null
+					},
+					"text": "Gấu cái búa :v",
+					"createTime": 1404466066,
+					"likeCount": 0,
+					"liked": false
+				}
+			]
+		}
