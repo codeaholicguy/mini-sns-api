@@ -11,6 +11,7 @@ Deployment Process:
   2. Copy configuration file from ```/n9-mini-sns-web/src/main/resources/n9-mini-sns.properties``` to ```/etc/n9-mini-sns/n9-mini-sns.properties```
   
   3. Edit configuration file 
+  
       ```data.url = jdbc:mysql://{url_to_your_database_server}:3306/n9_mini_sns?useUnicode=true&amp;characterEncoding=UTF-8&amp;connectionCollation=utf8mb4_general_ci```
 
 
