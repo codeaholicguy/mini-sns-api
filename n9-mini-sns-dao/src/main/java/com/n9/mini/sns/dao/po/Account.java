@@ -19,7 +19,7 @@ import javax.persistence.Table;
  * Account entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "account", catalog = "tsb_dpet")
+@Table(name = "account")
 public class Account implements java.io.Serializable {
 
 	// Fields
@@ -128,7 +128,7 @@ public class Account implements java.io.Serializable {
 	}
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "follow", catalog = "tsb_dpet", joinColumns = { @JoinColumn(name = "followed_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "follower_id", nullable = false, updatable = false) })
+	@JoinTable(name = "follow", joinColumns = { @JoinColumn(name = "followed_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "follower_id", nullable = false, updatable = false) })
 	public Set<Account> getAccountsForFollowerId() {
 		return this.accountsForFollowerId;
 	}

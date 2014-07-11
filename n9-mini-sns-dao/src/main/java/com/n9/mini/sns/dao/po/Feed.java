@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Feed entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "feed", catalog = "tsb_dpet")
+@Table(name = "feed")
 public class Feed implements java.io.Serializable {
 
 	// Fields

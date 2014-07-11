@@ -111,20 +111,20 @@ public class WebsocketEndPoint extends TextWebSocketHandler {
 		}
 	}
 
-	/**
-	 * Invoked after bean creation is complete, this method will schedule
-	 * updatePriceAndBroacast every 1 second
-	 */
-	@PostConstruct
-	private void broadcastTimePeriodically() {
-		SCHEDULER.scheduleAtFixedRate(new Runnable() {
-			@Override
-			public void run() {
-				LOGGER.info("Clean queue");
-				cleanQueue();
-			}
-		}, 120000);
-	}
+//	/**
+//	 * Invoked after bean creation is complete, this method will schedule
+//	 * cleanQueue every 120 second
+//	 */
+//	@PostConstruct
+//	private void broadcastTimePeriodically() {
+//		SCHEDULER.scheduleAtFixedRate(new Runnable() {
+//			@Override
+//			public void run() {
+//				LOGGER.info("Clean queue");
+//				cleanQueue();
+//			}
+//		}, 120000);
+//	}
 
 	/**
 	 * @param message

@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Tag entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "tag", catalog = "tsb_dpet")
+@Table(name = "tag")
 public class Tag implements java.io.Serializable {
 
 	// Fields
@@ -66,7 +66,7 @@ public class Tag implements java.io.Serializable {
 	}
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "image_tag", catalog = "tsb_dpet", joinColumns = { @JoinColumn(name = "tag_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "image_id", nullable = false, updatable = false) })
+	@JoinTable(name = "image_tag", joinColumns = { @JoinColumn(name = "tag_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "image_id", nullable = false, updatable = false) })
 	public Set<Image> getImages() {
 		return this.images;
 	}
