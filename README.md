@@ -30,3 +30,5 @@ Deployment Process:
 
 Notes:
   1. You can check application log by ```/var/log/tomcat/n9-mini-sns.log``` 
+  
+  2. APIs is described in ```api_info.txt```
